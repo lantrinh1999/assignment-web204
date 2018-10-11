@@ -11,6 +11,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 	die;
 }
 $id = $_POST['id'];
+$old_filename = $_POST['old_filename'];
 $product_name = $_POST['product_name'];
 $detail = $_POST['detail'];
 $list_price = $_POST['list_price'];
@@ -18,7 +19,6 @@ $sell_price = $_POST['sell_price'];
 $cate_id = $_POST['cate_id'];
 $img = $_FILES['image'];
 $ext = pathinfo($img['name'], PATHINFO_EXTENSION);
-
 $filename = 'img/products/'.uniqid() . '.' . $ext;
 
 move_uploaded_file($img['tmp_name'], '../../'.$filename);
@@ -28,6 +28,15 @@ if(!$product_name){
 	die;
 }
 
+if ($img['name'] === "" || $img['size'] === 0 ) {
+	$filename = $old_filename;
+}
+$imageFileType = strtolower($ext);
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+	$filename = $old_filename;
+	
+}
     	$sql = "update " . TABLE_PRODUCT . " 
 			set
 				product_name = :product_name, 

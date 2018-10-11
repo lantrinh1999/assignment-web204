@@ -48,6 +48,7 @@ if(!$product){
       <h1>
         Dashboard
         <small>Tạo sản phẩm</small>
+
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?= $adminUrl?>"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -62,17 +63,23 @@ if(!$product){
         <div class="col-md-6">
             <!-- Tên sản phẩm -->
             <input type="hidden" name="id" value="<?= $productId ?>">
+            <input type="hidden" name="old_filename" value="<?= $product['image'] ?>">
+            <br>
             <div class="form-group">
               <label>Tên sản phẩm</label>
               <input type="text" name="product_name" class="form-control" value="<?= $product['product_name']?>">
-              <!-- /.error -->
-              <?php 
+            </div>
+                    <span>
+                <!-- /.error -->
+              <i>
+                <?php 
               if(isset($_GET['errName']) && $_GET['errName'] != ""){
                ?>
-               <span class="text-danger"><?= $_GET['errName'] ?></span>
+               <span class="text-danger">( Cảnh báo: <?= $_GET['errName'] ?>)</span>
               <?php } 
               ?>
-            </div>
+              </i>
+              </span>
             <!-- Danh mục -->
             <div class="form-group">
                 <label>Danh mục</label>
@@ -99,8 +106,11 @@ if(!$product){
         <div class="col-md-6">
           <div class="row">
             <div class="col-md-offset-3">
+
               <img  id="imageTarget" width="70%" src="<?= $siteUrl . $product['image'] ?> " class="img-reponsive">
+              
             </div>
+
           </div>
           <div class="form-group">
             <label>Ảnh sản phẩm</label>

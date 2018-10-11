@@ -4,6 +4,21 @@ session_start();
 $path = "../";
 require_once $path.$path."commons/utils.php";
 checkLogin(USER_ROLES['admin']);
+$id = $_GET['id'];
+$sql = "select * from users where id = $id";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$user = $stmt->fetch();
+if(!$user){
+  header('location: ' . $adminUrl . "tai-khoan");
+  die;
+}
+
+
+
+
+
+
 
  ?>
 <!DOCTYPE html>
@@ -40,37 +55,23 @@ checkLogin(USER_ROLES['admin']);
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <form action="<?= $adminUrl?>/tai-khoan/save-add.php" method="post" >
+        <form action="<?= $adminUrl?>/tai-khoan/save-edit.php" method="post" >
           <div class="col-md-6">
+            <input type="hidden" name="id" value="<?= $id ?>">
             <div class="form-group">
               <label>Email</label>
-              <!-- /.error -->
-              <?php 
-              if(isset($_GET['msg2']) && $_GET['msg2'] != ""){
-               ?>
-               <span class="text-danger"><?= $_GET['msg2'] ?></span>
-              <?php } 
-              ?>
-
-              <input type="text" name="email" class="form-control">
+              <input type="text" name="email" class="form-control" value="<?= $user['email'] ?>">
             </div>
             <div class="form-group">
               <label>Tên đầy đủ</label>
-              <input type="text" name="fullname" class="form-control">
+              <input type="text" name="fullname" class="form-control" value="<?= $user['fullname'] ?>">
             </div>
             <div class="form-group">
-              <label>Mật khẩu</label>
+              <label>Mật khẩu mới</label>
               <input type="password" name="password" class="form-control">
             </div>
-            <!-- /.error -->
-              <?php 
-              if(isset($_GET['msg']) && $_GET['msg'] != ""){
-               ?>
-               <span class="text-danger"><?= $_GET['msg'] ?></span>
-              <?php } 
-              ?>
             <div class="form-group">
-              <label>Xác nhận mật khẩu</label>
+              <label>Xác nhận mật khẩu mới</label>
               <input type="password" name="cfPassword" class="form-control">
             </div>
             <div class="form-group">

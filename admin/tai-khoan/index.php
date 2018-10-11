@@ -78,9 +78,9 @@ $users = $stmt->fetchAll();
                 </td>
                 <td><?= $u['phone_number'] ?></td>
                 <td>
-                  <a href="<?= $adminUrl ?>tai-khoan/edit.php?id=<?= $i['id'] ?>" 
+                  <a href="<?= $adminUrl ?>tai-khoan/edit.php?id=<?= $u['id'] ?>" 
                   class="btn btn-sm btn-primary">Sửa</a>
-                  <a href="<?= $adminUrl ?>tai-khoan/remove.php?id=<?= $i['id'] ?>" 
+                  <a href="<?= $adminUrl ?>tai-khoan/remove.php?id=<?= $u['id'] ?>" 
                   class="btn btn-sm btn-danger">Xoá</a>
                 </td>
               </tr>
