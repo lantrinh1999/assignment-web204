@@ -24,6 +24,7 @@ $products = $stmt->fetchAll();
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
   <title>AdminLTE | Quản lý Sản phẩm</title>
 
   <?php include_once $path.'_share/top_asset.php'; ?>

@@ -37,8 +37,11 @@ function dd($var){
 	die;
 }
 
-function checkLogin(){
-	if(!isset($_SESSION['login']) || $_SESSION['login'] == null){
+function checkLogin($role = 300){
+	global $siteUrl;
+	if(!isset($_SESSION['login']) 
+		|| $_SESSION['login'] == null
+		|| $_SESSION['login']['role'] < $role){
 	  header('location: '.$siteUrl . 'login.php');
 	  die;
 	}

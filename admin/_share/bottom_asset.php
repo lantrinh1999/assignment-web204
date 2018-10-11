@@ -41,3 +41,5 @@ require_once $path. '../commons/utils.php';
 <script src="<?= $adminAssetUrl?>dist/js/demo.js"></script>
 <!-- Alert -->
 <script src="<?= $adminAssetUrl?>plugins/"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
