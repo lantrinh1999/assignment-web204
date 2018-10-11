@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0 auto;
+}
+
+body {
+  padding-top: 0px;
+  background: rgb(252, 252, 252) !important;
+
+}
+
+@media (min-width: 1000px) {
+  body {
+    padding-top: 0px;
+  }
+}
+
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
+
+h2,
+h3 {
+  font-weight: normal !important;
+  text-transform: uppercase !important;
+  margin-bottom: 20px !important;
+}
+
+.nav-link {
+  padding: 5px !important;
+  text-transform: uppercase !important;
+  font-weight: 400 !important;
+}
+
+.nav-link:hover {
+  text-decoration: underline !important;
+  color: black !important;
+
+}
+
+.nav-link:focus {
+  text-decoration: underline !important;
+  color: black !important;
+
+}
+
+.nav-link:active {
+  text-decoration: underline !important;
+  color: black !important;
+
+}
+
+.btn-search:hover {
+  background: black !important;
+  color: white !important;
+}
+
+.nav-link,
+.nav-item {
+  text-transform: uppercase !important;
+}
+
+
+.slider {
+  overflow: hidden;
+}
+
+.card-title {
+  font-size: 17px !important;
+}
+
+.list_price,
+.sell_price {
+  font-weight: 500 !important;
+}
+
+.sell_price {
+  color: brown;
+}
+
+.card-title {
+  height: 50px;
+  font-weight: 500;
+}
+
+
+
+.view span {
+  height: 1px;
+  width: 10px;
+}
+
+
+.cmt {
+  padding-left: 10px !important;
+  padding-top: 0px !important;
+}
+
+.sub-text {
+  margin: 10px 0;
+}
+
+.content-sub {
+  width: 100%;
+  height: 200px;
+  resize: none;
+  outline: #ccc;
+  margin-left: 1px;
+}
