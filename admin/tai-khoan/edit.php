@@ -60,6 +60,13 @@ if(!$user){
             <input type="hidden" name="id" value="<?= $id ?>">
             <div class="form-group">
               <label>Email</label>
+              <!-- /.error -->
+              <?php 
+              if(isset($_GET['msg2']) && $_GET['msg2'] != ""){
+               ?>
+               <span class="text-danger"> | <?= $_GET['msg2'] ?></span>
+              <?php } 
+              ?>
               <input type="text" name="email" class="form-control" value="<?= $user['email'] ?>">
             </div>
             <div class="form-group">
@@ -70,6 +77,13 @@ if(!$user){
               <label>Mật khẩu mới</label>
               <input type="password" name="password" class="form-control">
             </div>
+            <!-- /.error -->
+              <?php 
+              if(isset($_GET['msg']) && $_GET['msg'] != ""){
+               ?>
+               <span class="text-danger"><?= $_GET['msg'] ?></span>
+              <?php } 
+              ?>
             <div class="form-group">
               <label>Xác nhận mật khẩu mới</label>
               <input type="password" name="cfPassword" class="form-control">

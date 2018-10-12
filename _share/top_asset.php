@@ -25,8 +25,6 @@ require_once $path . './commons/utils.php';
 <link rel="stylesheet" href="<?= $adminAssetUrl?>bower_components/bootstrap-daterangepicker/daterangepicker.css">
 <!-- bootstrap wysihtml5 - text editor -->
 <link rel="stylesheet" href="<?= $adminAssetUrl?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- alert -->
 <link rel="stylesheet" href="<?= $adminAssetUrl?>plugins/">
 

@@ -8,12 +8,13 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 }
 
 $id = $_POST['id'];
-
 $email = $_POST['email'];
 $fullname = $_POST['fullname'];
 $password = $_POST['password'];
 $cfPassword = $_POST['cfPassword'];
 $role = $_POST['role'];
+
+
 
 if($password != $cfPassword){
 	header('location: ' . $adminUrl . 'tai-khoan/edit.php?msg=Xác nhận mật khẩu không đúng!');

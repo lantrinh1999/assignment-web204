@@ -90,6 +90,7 @@ include './_share/header.php';
 					<form onsubmit="return validateForm()" class="myForm" name="myForm" action="submit_comment.php" method="post">
 
 						<input type="hidden" name="id" value=" <?=$id?>">
+            <span id="err"></span>
 						<div class="form-group">
 							<label>Email</label>
 							<input type="text" id="email" placeholder="email" name="email" class="form-control" >
@@ -158,11 +159,24 @@ function validateForm() {
     var dotpos = x.lastIndexOf(".");
     if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
         alert("Bạn phải nhập email") ;
+        /*
+        var a = document.getElementById('err').innerHTML = "lỗi" ;
+        */
+        return false;
+    }
+    if (x == "") {
+      alert("Bạn phải nhập email") ;
+     /* 
+     var a = document.getElementById('err').innerHTML = "lỗi 1" ;
+     */
         return false;
     }
     var y =  document.forms["myForm"]["content"].value;
-    if (y = "") {
+    if (y == "") {
     	alert("Bạn phải nhập nội dung");
+      /*
+      var a = document.getElementById('err').innerHTML = "lỗi 2" ;
+      */
         return false;
     }
 }

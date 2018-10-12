@@ -45,6 +45,7 @@ $users = $stmt->fetchAll();
     <!-- Main content -->
     <section class="content">
       <div class="row">
+        <div class="box-body">
         <table class="table table-stripped">
           <thead>
             <th>#</th>
@@ -87,6 +88,7 @@ $users = $stmt->fetchAll();
             <?php endforeach ?>
           </tbody>       
         </table>
+      </div>
       </div>
     </section>
     <!-- /.content -->

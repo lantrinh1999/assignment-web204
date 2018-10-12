@@ -145,17 +145,17 @@ require_once $path.'../commons/utils.php';
         </a>
         <ul class="treeview-menu">
           <li class="">
-            <a href="<?= $adminUrl ?>thong-tin">
+            <a href="<?= $adminUrl ?>thong-tin/info.php">
               <i class="fa fa-eye"></i> Thông tin chung
             </a>
           </li>
           <li class="">
-            <a href="index.html">
+            <a href="<?= $adminUrl ?>slideshow">
               <i class="fa fa-file-image-o"></i> Slide shows
             </a>
           </li>
           <li class="">
-            <a href="index.html">
+            <a href="<?= $adminUrl ?>thong-tin/hang-lk.php">
               <i class="fa fa-amazon"></i> Hãng liên kết
             </a>
           </li>

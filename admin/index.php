@@ -26,6 +26,11 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 $countComment = $stmt->fetch();
 
+$sql = "select count(*) as total from  users";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$countUser = $stmt->fetch();
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -110,14 +115,14 @@ $countComment = $stmt->fetch();
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <h3><?= $countUser['total']?></h3>
 
-              <p>Unique Visitors</p>
+              <p>Số lượng tài khoản</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= $adminUrl?>tai-khoan" class="small-box-footer"> Danh sách tài khoản <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
