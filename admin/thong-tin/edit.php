@@ -13,7 +13,7 @@ $stmt->execute();
 $web_settings = $stmt->fetch();
 
 if(!$web_settings){
-	header('location: ' . $adminUrl . 'thong-tin/info.php');
+	header('location: ' . $adminUrl . 'thong-tin/index.php');
 }
 
  
@@ -53,7 +53,7 @@ if(!$web_settings){
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <form action="<?= $adminUrl ?>thong-tin/save-edit-info.php" method="post" enctype="multipart/form-data">
+        <form action="<?= $adminUrl ?>thong-tin/save-edit.php" method="post" enctype="multipart/form-data">
         <div class="col-md-6">
             <!-- Tên sản phẩm -->
             <input type="hidden" name="id" value="<?= $id ?>">
@@ -114,7 +114,7 @@ if(!$web_settings){
         </div>
         <div class="col-md-12">
           <div class="text-center">
-              <a href="<?= $adminUrl?>thong-tin/info.php" class="btn btn-danger btn-xs">Huỷ</a>
+              <a href="<?= $adminUrl?>thong-tin/index.php" class="btn btn-danger btn-xs">Huỷ</a>
               <button type="submit" class="btn btn-primary btn-xs">Tạo mới</button>
             </div>
         </div>

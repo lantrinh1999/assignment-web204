@@ -1,8 +1,11 @@
 <?php 
+session_start();
+
 // hien thi danh sach danh muc cua he thong
 $path = "../";
 require_once $path.$path."commons/utils.php";
 // dem ton so record trong bang danh muc
+checkLogin();
 $sql = "select 
       cmt.*,
       p.product_name
@@ -57,15 +60,12 @@ $comment = $stmt->fetchAll();
                   <tbody>
                   <tr>
                     <th style="width: 10px">Id</th>
-                    <th style="width: 120px">Tên sản phẩm</th>
-                    <th style="width: 110px">Email</th>
-                    <th style="width: 120px">Nội dung</th>
-                    <th style="width: 135px;">
-                      <a href="<?= $adminUrl?>comment/add.php"
-                        class="btn btn-xs btn-success"
-                        >
-                        <i class="fa fa-plus"></i> Thêm mới
-                      </a>
+                    <th style="width: 130px">Tên sản phẩm</th>
+
+                    <th style="width: 200px">Email</th>
+                    <th style="">Nội dung</th>
+                    <th style="width: 50px">
+                      
                     </th>
                   </tr>
                   <?php foreach ($comment as $cmt): ?>
@@ -81,14 +81,12 @@ $comment = $stmt->fetchAll();
                         <?= $cmt['content'] ?>
                       </td>
                       <td>
-                        <a href="<?= $adminUrl?>danh-muc/edit.php?id=<?= $c['id']?>"
-                        class="btn btn-xs btn-info"
-                        >
-                          <i class="fa fa-pencil"></i> Cập nhật
-                        </a>
-                        <a href="<?= $adminUrl?>danh-muc/remove.php?id=<?= $c['id']?>"
-                        class="btn btn-xs btn-danger"
-                        >
+                        
+                        <a href="javascript:;"
+                      linkurl="<?= $adminUrl?>comment/remove.php?id=<?= $cmt['id']?>"
+                      class="btn btn-xs btn-danger btn-remove"
+                      >
+
                           <i class="fa fa-trash"></i> Xoá
                         </a>
                       </td>
@@ -119,6 +117,40 @@ $comment = $stmt->fetchAll();
 </div>
 <!-- ./wrapper -->
 <?php include_once $path.'_share/bottom_asset.php'; ?>  
+
+ 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+  <?php 
+  if(isset($_GET['success']) && $_GET['success'] == 'true'){
+    ?>
+    swal('Thêm Sản phẩm thành công!');
+  <?php
+  }
+   ?>
+  $('.btn-remove').on('click', function(){
+
+    var removeUrl = $(this).attr('linkurl');
+    // var conf = confirm('Bạn có chắc chắn muốn xoá danh mục này không?');
+    // if(conf){
+    //  window.location.href = removeUrl;
+    // }
+    swal({
+      title: "Cảnh báo",
+      text: "Bạn có chắc chắn muốn xoá mục này không?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        window.location.href = removeUrl;
+      } 
+    });
+  });
+
+</script>
 
 </body>
 </html>

@@ -80,7 +80,7 @@ $web_settings = $stmt->fetchAll();
 		                  <td><?= $c['email']?></td>
 		                  <td><?= $c['fb']?></td>
 		                  <td>
-		                  	<a href="<?= $adminUrl?>thong-tin/edit-info.php?id=<?= $c['id']?>"
+		                  	<a href="<?= $adminUrl?>thong-tin/edit.php?id=<?= $c['id']?>"
                   			class="btn btn-xs btn-info"
 	                  		>
 	                  			<i class="fa fa-pencil"></i> Sửa

@@ -13,7 +13,7 @@ $dataSlides = $stmt->fetchAll();
 ?>
 
 
-<div class="row  slider">
+<div style="max-height: 37.3%,  overflow: hidden" class="row  slider">
       <div class="col-12">
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -34,7 +34,10 @@ $dataSlides = $stmt->fetchAll();
     $active = $count === 0 ? "active" : "";
     ?>
 					<div class="carousel-item <?= $active ?>">
-						<img class="d-block img-fluid" src="<?= $siteUrl . $slide['image'] ?>">
+            <div style="max-height: 37.3%,  overflow: hidden">
+              <img class="d-block img-fluid" src="<?= $siteUrl . $slide['image'] ?>">
+            </div>
+						
 					</div>
 					<?php 
     $count++;

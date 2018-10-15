@@ -1,21 +1,22 @@
 <?php 
+session_start();
+
 require_once '../../commons/utils.php';
+
+checkLogin();
+
 if($_SERVER['REQUEST_METHOD'] != 'POST'){
-	header('location: ' . $adminUrl . 'slideshow');
+	header('location: ' . $adminUrl . 'profile');
 	die;
 }
-$slideshowId = $_POST['id'];
-
-$url = $_POST['url'];
-$status = $_POST['status'];
+$id = $_POST['id'];
+$name = $_POST['name'];
 $img = $_FILES['image'];
-$old_filename = $_POST['old_filename'];
 $ext = pathinfo($img['name'], PATHINFO_EXTENSION);
-$filename = 'img/slider/'.uniqid() . '.' . $ext;
+$filename = 'img/'.uniqid() . '.' . $ext;
 move_uploaded_file($img['tmp_name'], '../../'.$filename);
-if ($img['name'] == "") {
-	$filename = $image;
-}
+
+$old_filename = $_POST['old_filename'];
 
 if ($img['name'] === "" || $img['size'] === 0 ) {
 	$filename = $old_filename;
@@ -26,12 +27,19 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 	$filename = $old_filename;
 	
 }
-$sql = "UPDATE slideshows SET url=:url,status=:status,image=:image WHERE id = '$slideshowId'";
-$stmt = $conn->prepare($sql);
-$stmt->bindParam(":url", $url);
-$stmt->bindParam(":status", $status);
-$stmt->bindParam(":image", $filename);
-$stmt->execute();
 
-header('location: ' . $adminUrl . 'slideshow');
+
+if(!$name){
+	header('location: ' . $adminUrl . 'profile/edit.php?id='.$id.'&errName=Vui lòng nhập tên danh mục');
+	die;
+}
+
+$sql = "update users set fullname = :name, avatar = :image where id = :id";
+
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(":name", $name);
+$stmt->bindParam(":image", $filename);
+$stmt->bindParam(":id", $id, PDO::PARAM_INT);
+$stmt->execute();
+header('location: ' . $adminUrl . 'profile');
  ?>

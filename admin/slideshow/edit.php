@@ -47,6 +47,7 @@ $slideshows = $stmt->fetch();
 
         <form enctype="multipart/form-data" action="<?= $adminUrl?>slideshow/save_edit.php" method="post">
           <input type="hidden" value="<?= $slideshows['id']?>" name="id">
+          <input type="hidden" name="old_filename" value="<?= $slideshows['image']?>">
           <div class="col-md-6">
              <div class="form-group">
               <label>Url</label>

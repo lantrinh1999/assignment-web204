@@ -95,7 +95,7 @@ require_once $path.'../commons/utils.php';
         </a>
         <ul class="treeview-menu">
           <li class="">
-            <a href="index.html">
+            <a href="<?= $adminUrl ?>comment">
               <i class="fa fa-circle-o"></i> Danh sách
             </a>
           </li>
@@ -145,7 +145,7 @@ require_once $path.'../commons/utils.php';
         </a>
         <ul class="treeview-menu">
           <li class="">
-            <a href="<?= $adminUrl ?>thong-tin/info.php">
+            <a href="<?= $adminUrl ?>thong-tin/index.php">
               <i class="fa fa-eye"></i> Thông tin chung
             </a>
           </li>
@@ -155,7 +155,7 @@ require_once $path.'../commons/utils.php';
             </a>
           </li>
           <li class="">
-            <a href="<?= $adminUrl ?>thong-tin/hang-lk.php">
+            <a href="<?= $adminUrl ?>doi-tac/index.php">
               <i class="fa fa-amazon"></i> Hãng liên kết
             </a>
           </li>

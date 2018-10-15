@@ -103,14 +103,38 @@ SlideShows
   </div>
   <!-- ./wrapper -->
   <?php include_once $path.'_share/bottom_asset.php'; ?>
-  <script type="text/javascript">
-    $('.btn-remove').on('click', function(){
-      var removeUrl = $(this).attr('linkurl');
-      var conf = confirm("Bạn có chắc chắn muốn xoá danh mục này không?");
-      if (conf) {
-        window.location.href = removeUrl;
-      }});
-    </script> 
+  
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+<script type="text/javascript">
+  <?php 
+  if(isset($_GET['success']) && $_GET['success'] == 'true'){
+    ?>
+    swal('Thêm Sản phẩm thành công!');
+  <?php
+  }
+   ?>
+  $('.btn-remove').on('click', function(){
+
+    var removeUrl = $(this).attr('linkurl');
+    // var conf = confirm('Bạn có chắc chắn muốn xoá danh mục này không?');
+    // if(conf){
+    //  window.location.href = removeUrl;
+    // }
+    swal({
+      title: "Cảnh báo",
+      text: "Bạn có chắc chắn muốn xoá sản phẩm này không?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        window.location.href = removeUrl;
+      } 
+    });
+  });
+
+</script>
   </body>
   </html>
