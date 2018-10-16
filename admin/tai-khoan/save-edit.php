@@ -14,20 +14,60 @@ $password = $_POST['password'];
 $cfPassword = $_POST['cfPassword'];
 $role = $_POST['role'];
 
+$sql = "select * from users where id not in ('$id')";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$users = $stmt->fetchAll();
 
+foreach ($users as $c) {
+	if (strtolower($email) == strtolower($c['email'])) {
+		header('location: ' . $adminUrl . 'tai-khoan/edit.php?id='.$id.'&msg1=Email đã được sử dụng!');
+	die;
+	}
+}
 
-if($password != $cfPassword){
-	header('location: ' . $adminUrl . 'tai-khoan/edit.php?msg=Xác nhận mật khẩu không đúng!');
+if(!$email){
+	header('location: ' . $adminUrl . 'tai-khoan/edit.php?id='.$id.'&msg1=Email không được để trống!');
+	die;
+}
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  header('location: ' . $adminUrl . 'tai-khoan/edit.php?id='.$id.'&msg1=Không đúng định dạng email!');
 	die;
 }
 
 
-// email xem có tồn tại không
 
-// mật khẩu có nằm trong khoảng từ 6-20 ký tự không
+$sql = "select * from users where id not in ('$id')";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$users = $stmt->fetchAll();
+foreach ($users as $c) {
+	if (strtolower($email) == strtolower($c['email'])) {
+		header('location: ' . $adminUrl . 'tai-khoan/edit.php?msg1=Email đã tồn tại!');
+	die;
+	}
+}
 
 
-$password = password_hash($password, PASSWORD_DEFAULT);
+
+if($password != $cfPassword){
+	header('location: ' . $adminUrl . 'tai-khoan/edit.php?id='.$id.'&msg=Xác nhận mật khẩu không đúng!');
+	die;
+}
+
+$sql = "select * from users where id = '$id'";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$user = $stmt->fetch();
+if (!$password && !$cfPassword) {
+	$password = $user['password'];
+} 
+
+if ($password === $cfPassword && $password != "") {
+	$password = password_hash($password, PASSWORD_DEFAULT);
+}
+
+
 
 
 
@@ -47,6 +87,7 @@ $stmt->bindParam(":password", $password);
 $stmt->bindParam(":role", $role);
 $stmt->bindParam(":id", $id);
 $stmt->execute();
+
 header('location: ' . $adminUrl . 'tai-khoan');
 
  ?>

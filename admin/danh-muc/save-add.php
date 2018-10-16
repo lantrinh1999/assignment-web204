@@ -13,10 +13,23 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 $name = $_POST['name'];
 $description = $_POST['description'];
 
+$sql = "select * from categories";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$cate = $stmt->fetchAll();
+
 if(!$name){
 	header('location: ' . $adminUrl . 'danh-muc/add.php?errName=Vui lòng nhập tên danh mục');
 	die;
 }
+foreach ($cate as $c) {
+	if (strtolower($name) == strtolower($c['name'])) {
+		header('location: ' . $adminUrl . 'danh-muc/add.php?errName=Danh mục đã tồn tại');
+	die;
+	}
+}
+
+
 
 $sql = "insert into " . TABLE_CATEGORY . " 
 		(name, description)

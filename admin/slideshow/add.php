@@ -73,7 +73,7 @@ $cates = $stmt->fetchAll();
           </div>
           
           <div class="col-md-12 text-right">
-            <a href="<?= $adminUrl?>san-pham" class="btn btn-xs btn-danger">Huỷ</a>
+            <a href="<?= $adminUrl?>slideshow" class="btn btn-xs btn-danger">Huỷ</a>
             <button type="submit" class="btn btn-xs btn-primary">Lưu</button>
           </div>
         </form>

@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 
 require_once '../../commons/utils.php';
 
@@ -16,6 +16,18 @@ $description = $_POST['description'];
 if(!$name){
 	header('location: ' . $adminUrl . 'danh-muc/edit.php?id='.$id.'&errName=Vui lòng nhập tên danh mục');
 	die;
+}
+
+$sql = "select * from categories where id not in ('$id')";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$cate = $stmt->fetchAll();
+
+foreach ($cate as $c) {
+	if (strtolower($name) == strtolower($c['name'])) {
+		header('location: ' . $adminUrl . 'danh-muc/edit.php?id='.$id.'&errName=Danh mục đã tồn tại');
+	die;
+	}
 }
 
 $sql = "update " . TABLE_CATEGORY . " 

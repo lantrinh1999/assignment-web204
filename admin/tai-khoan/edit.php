@@ -62,9 +62,9 @@ if(!$user){
               <label>Email</label>
               <!-- /.error -->
               <?php 
-              if(isset($_GET['msg2']) && $_GET['msg2'] != ""){
+              if(isset($_GET['msg1']) && $_GET['msg1'] != ""){
                ?>
-               <span class="text-danger"> | <?= $_GET['msg2'] ?></span>
+               <span class="text-danger"> | <?= $_GET['msg1'] ?></span>
               <?php } 
               ?>
               <input type="text" name="email" class="form-control" value="<?= $user['email'] ?>">
@@ -97,7 +97,7 @@ if(!$user){
               </select>
             </div>
             <div class="col-md-12 text-right">
-              <a href="<?= $adminUrl?>san-pham" class="btn btn-xs btn-danger">Huỷ</a>
+              <a href="<?= $adminUrl?>tai-khoan" class="btn btn-xs btn-danger">Huỷ</a>
               <button type="submit" class="btn btn-xs btn-primary">Lưu</button>
             </div>
           </div>
