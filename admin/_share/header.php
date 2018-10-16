@@ -1,6 +1,12 @@
 <?php 
 require_once $path.'../commons/utils.php';
+$id = $_SESSION['login']['id'];
+$sql = "select 
+      * from users where id = '$id'";
 
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$u = $stmt->fetch();
  ?>
 <header class="main-header">
 	<!-- Logo -->
@@ -22,15 +28,23 @@ require_once $path.'../commons/utils.php';
 	     
 	      <li class="dropdown user user-menu">
 	        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	          <img src="<?= $adminAssetUrl?>dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?= $_SESSION['login']['email'] ?></span>
+	          <img src="<?= $siteUrl . $u['avatar'] ?>" class="user-image" alt="User Image">
+              <span class="hidden-xs"><?= $u['email'] ?></span>
+              <br>
+              
 	        </a>
 	        <ul class="dropdown-menu">
 	          <!-- User image -->
-	          <li class="user-header">
-	            <img src="<?= $adminAssetUrl?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+	          <li style="color: white" class="user-header">
+	            <img src="<?= $siteUrl . $u['avatar'] ?>" class="img-circle" alt="User Image">
 
-	          <div><span class="hidden-xs"><?= $_SESSION['login']['email'] ?></span></div>
+	          <div>
+	          	<br>
+	          	<span class="hidden-xs"><?= $u['email'] ?></span>
+	          </div>
+	          <div>
+              	<span class="hidden-xs"><?= $u['fullname'] ?></span>
+              </div>
 	          </li>
 	          <!-- Menu Body -->
 	          <!-- Menu Footer-->

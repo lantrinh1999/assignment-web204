@@ -76,7 +76,7 @@ include './_share/client_assets.php';
           <div class="footer-product text-center view">
             <a href="<?= $siteUrl ?>chitiet.php?id=<?= $np['id'] ?>" class="details btn btn-dark">Xem chi tiết</a>
             <span></span>
-						<a href="#" class="buying btn btn-dark">Mua hàng</a>
+						<a href="<?= $siteUrl ?>chitiet.php?id=<?= $np['id'] ?>" class="buying btn btn-dark">Mua hàng</a>
 					</div>
           </div>
         </div>

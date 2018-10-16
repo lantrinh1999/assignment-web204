@@ -20,6 +20,10 @@ $sqlmoreproductlike = "select * from " . TABLE_PRODUCT . " where cate_id =" . $p
 $stmt = $conn->prepare($sqlmoreproductlike);
 $stmt->execute();
 $datamoreproductlike = $stmt->fetchAll();
+$updateView = "update products set views = views +1 where id = '$id'";
+$stmt = $conn->prepare($updateView);
+$stmt->execute();
+
 
 ?>
 
@@ -30,6 +34,7 @@ $datamoreproductlike = $stmt->fetchAll();
 include './_share/client_assets.php';
 ?>
 <link rel="stylesheet" href="css/main.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<title>THÔNG TIN SẢN PHẨM</title>
 </head>
 <body>
@@ -180,7 +185,37 @@ function validateForm() {
         return false;
     }
 }
+ <?php 
+  if(isset($_GET['success']) && $_GET['success'] == 'true'){
+    ?>
+    swal('Thêm Sản phẩm thành công!');
+  <?php
+  }
+   ?>
+  $('.btn-remove').on('click', function(){
+
+    var removeUrl = $(this).attr('linkurl');
+    // var conf = confirm('Bạn có chắc chắn muốn xoá danh mục này không?');
+    // if(conf){
+    //  window.location.href = removeUrl;
+    // }
+    swal({
+      title: "Cảnh báo",
+      text: "Bạn có chắc chắn muốn xoá sản phẩm này không?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        window.location.href = removeUrl;
+      } 
+    });
+  });
+
 </script>
+
+
 
 
 

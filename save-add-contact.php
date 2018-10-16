@@ -25,10 +25,6 @@ foreach ($us as $u) {
 	}
 
 	}
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  		header('location: ' . $adminUrl . 'tai-khoan/add.php?msg2=Mời nhập email!');
-	die; 
-}
 if($password != $cfPassword){
 	header('location: ' . $adminUrl . 'tai-khoan/add.php?msg=Xác nhận mật khẩu không đúng!');
 	die;

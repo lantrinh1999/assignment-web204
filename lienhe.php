@@ -53,7 +53,7 @@ include './_share/header.php';
             <h2 class="title-product">Liên hệ với chúng tôi</h2>
 <div class="row">
                 <div class="col-lg-8">
-                <form onsubmit="return validateForm()" class="myForm" name="myForm" method="post">
+                <form onsubmit="return validateForm()" action="<?= $adminUrl ?>lien-he/save-add.php" class="myForm" name="myForm" method="post">
 
             <input type="hidden" name="id" value=" <?=$id?>">
             <div class="form-group">

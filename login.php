@@ -2,7 +2,6 @@
 require_once './commons/utils.php';
  ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +52,7 @@ include './_share/client_assets.php';
 		<div class="login-box-body">
     <p class="login-box-msg">Sign in</p>
 
-    <form action="<?= $siteUrl ?>post-login.php" method="post">
+    <form onsubmit="return validateForm()" action="<?= $siteUrl ?>post-login.php" method="post">
     	<div style="color: red">
 			<?php 
               if(isset($_GET['msg']) && $_GET['msg'] != ""){
@@ -61,13 +60,11 @@ include './_share/client_assets.php';
                }
               ?>
 		</div>
-      <div class="form-group has-feedback">
+      <div class="form-group">
         <input type="email" name="email" class="form-control" placeholder="Email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
-      <div class="form-group has-feedback">
+      <div class="form-group">
         <input type="password" name="password" class="form-control" placeholder="Password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-12">
@@ -85,6 +82,34 @@ include './_share/client_assets.php';
   </div>
 </div>
 
-	
+
+
+<script>
+function validateForm() {
+    var name = document.forms["myForm"]["name"].value;
+    if (name === "") {
+      alert("Bạn phải nhập tên") ;
+        return false;
+    }
+    var x = document.forms["myForm"]["email"].value;
+    if (x === "") {
+      alert("Email không được bỏ trống") ;
+        return false;
+    }
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        alert("Bạn phải nhập email đúng định dạng") ;
+        return false;
+    }
+    var y =  document.forms["myForm"]["content"].value;
+    if (y === "") {
+      alert("Bạn phải nhập nội dung");
+        return false;
+    }
+}
+</script>
+
+
 </body>
 </html>
