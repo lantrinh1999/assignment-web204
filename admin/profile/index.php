@@ -94,7 +94,7 @@ body {
 	padding: 5px;
 	margin-bottom: 10px;
   </style>
-}
+
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">

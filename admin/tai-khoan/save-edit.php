@@ -36,20 +36,6 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 
-
-$sql = "select * from users where id not in ('$id')";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$users = $stmt->fetchAll();
-foreach ($users as $c) {
-	if (strtolower($email) == strtolower($c['email'])) {
-		header('location: ' . $adminUrl . 'tai-khoan/edit.php?msg1=Email đã tồn tại!');
-	die;
-	}
-}
-
-
-
 if($password != $cfPassword){
 	header('location: ' . $adminUrl . 'tai-khoan/edit.php?id='.$id.'&msg=Xác nhận mật khẩu không đúng!');
 	die;

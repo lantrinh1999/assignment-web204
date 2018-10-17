@@ -51,8 +51,8 @@ $dataCate = $stmt->fetchAll();
               <a class="nav-link" href="<?= $siteUrl ?>logout.php">Đăng nhập</a>
             </li>
         </ul>
-        <form method="post" action="<?= $siteUrl ?>search.php" class="form-inline my-2 my-lg-0">
-          <input name="name" class="nav-item form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+        <form method="get" action="<?= $siteUrl ?>search.php" class="form-inline my-2 my-lg-0">
+          <input name="search" class="nav-item form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
           <button class="nav-item btn  my-2 my-sm-0 btn-search" type="submit">Tìm</button>
         </form>
       </div>

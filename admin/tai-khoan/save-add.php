@@ -17,6 +17,7 @@ $fullname = $_POST['fullname'];
 $password = $_POST['password'];
 $cfPassword = $_POST['cfPassword'];
 $role = $_POST['role'];
+$avatar = "img/5bc634e16dc6a.jpg";
 
 foreach ($us as $u) {
 	if ($email == $u['email']) {
@@ -48,18 +49,22 @@ $password = password_hash($password, PASSWORD_DEFAULT);
 $sql = "insert into users
 			(email, 
 			fullname, 
-			password, 
+			password,
+			avatar, 
 			role)
 		values 
 			(:email, 
 			:fullname, 
 			:password, 
+			:avatar,
 			:role)";
 
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(":email", $email);
 $stmt->bindParam(":fullname", $fullname);
 $stmt->bindParam(":password", $password);
+$stmt->bindParam(":avatar", $avatar);
+
 $stmt->bindParam(":role", $role);
 $stmt->execute();
 header('location: ' . $adminUrl . 'tai-khoan');

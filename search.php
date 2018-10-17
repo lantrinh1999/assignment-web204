@@ -2,17 +2,12 @@
 require_once './commons/utils.php';
 
 // 1. Kiem tra xem id danh muc co thuc su ton tai khong
-if($_SERVER['REQUEST_METHOD'] != 'POST'){
+if($_SERVER['REQUEST_METHOD'] != 'GET'){
   header("location: $siteUrl" . "index.php");
   die;
 }
 
-$name = $_POST['name'];
-$name = strtolower($name);
-if (!$name) {
-  header("location: $siteUrl" . "index.php");
-  die;
-}
+$name = $_GET['search'];
 
 $pageNumber = isset($_GET['page']) == true ? $_GET['page'] : 1;
 $pageSize = 3;
@@ -20,13 +15,13 @@ $offset = ($pageNumber - 1) * $pageSize;
 
 // 2. lay danh sach san pham thuoc danh muc
 
-$sql = " select * FROM products WHERE product_name LIKE '%" . $name .  "%' "; 
+$sql = " select * FROM products WHERE product_name LIKE '%$name%' "; 
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $products = $stmt->fetchAll();
+$notf = "";
 if (!$products) {
-  header("location: $siteUrl" . "index.php");
-  die;
+  $notf = "Không tìm thấy sản phẩm";
 }
 ?>
 
@@ -56,7 +51,11 @@ include './_share/client_assets.php';
       <div class="tittle-cate">
 			</div>
     <!-- /.row -->
+    <h3>Tìm kiếm "<?= $name ?>"</h3>
+    <br>
+    <h4><?= $notf ?></h4>
     <div class="row">
+
       <?php foreach ($products as $np) : ?>
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card h-100">

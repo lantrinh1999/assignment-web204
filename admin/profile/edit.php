@@ -8,7 +8,11 @@ require_once $path.$path."commons/utils.php";
 
 checkLogin();
 $id = $_GET['id'];
-$id = $_SESSION['login']['id'];
+$ids = $_SESSION['login']['id'];
+if($id != $ids){
+  header('location: ' . $adminUrl . 'profile');
+  die;
+}
 $sql = "select * from 
       users  where id = '$id'";
 $stmt = $conn->prepare($sql);
@@ -54,16 +58,50 @@ $u = $stmt->fetch();
         <div class="col-md-6">
           <input type="hidden" name="id" value="<?= $id ?>">
           <input type="hidden" name="old_filename" value="<?= $u['avatar'] ?>">
+                      <div class="form-group">
+              <label>Email</label>
+              <!-- /.error -->
+              <?php 
+              if(isset($_GET['msg1']) && $_GET['msg1'] != ""){
+               ?>
+               <span class="text-danger"> | <?= $_GET['msg1'] ?></span>
+              <?php } 
+              ?>
+              <input type="text" name="email" class="form-control" value="<?= $u['email'] ?>">
+            </div>
             <div class="form-group">
               <label>Tên</label>
-              <input type="text" name="name" class="form-control" value="<?= $u['fullname'] ?>">
+              <input type="text" name="fullname" class="form-control" value="<?= $u['fullname'] ?>">
               <?php 
               if(isset($_GET['errName']) && $_GET['errName'] != ""){
                ?>
                <span class="text-danger"><?= $_GET['errName'] ?></span>
               <?php } ?>
             </div>
-            <div class="row">
+            <div class="form-group">
+              <label>Mật khẩu mới</label>
+              <input type="password" name="password" class="form-control">
+            </div>
+            <!-- /.error -->
+              <?php 
+              if(isset($_GET['msg']) && $_GET['msg'] != ""){
+               ?>
+               <span class="text-danger"><?= $_GET['msg'] ?></span>
+              <?php } 
+              ?>
+            <div class="form-group">
+              <label>Xác nhận mật khẩu mới</label>
+              <input type="password" name="cfPassword" class="form-control">
+            </div>
+
+
+
+
+
+        </div>
+            
+               <div class="col-md-6">
+<div class="row">
             <div class="col-md-offset-3">
               <img  id="imageTarget" width="70%" src="<?= $siteUrl ?><?= $u['avatar'] ?>" class="img-reponsive">
             </div>
@@ -72,20 +110,23 @@ $u = $stmt->fetch();
               <label>Ảnh</label>
               <input id="product_image" type="file" name="image" class="form-control">
             </div>
-            <div class="col-md-12">
+        </div>
+        <br>
+                    <div class="col-md-12">
+                      <br>
           <div class="text-center">
               <a href="<?= $adminUrl?>profile" class="btn btn-danger btn-xs">Huỷ</a>
               <button type="submit" class="btn btn-primary btn-xs">Sửa</button>
             </div>
-        </div>
-            
-          
-        </div>
-        <div class="col-md-6">
-
-        </div>
         
       </div>
+
+
+
+
+
+        </div>
+
       </form>
     </section>
     <!-- /.content -->

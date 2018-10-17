@@ -70,7 +70,9 @@ include './_share/header.php';
           <br>
           <p><?=$p['detail']?></p>
           <br>
+          <!--
           <button class="btn btn-dark">MUA</button>
+        -->
           </div>
 
 

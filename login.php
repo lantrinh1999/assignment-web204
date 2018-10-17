@@ -45,8 +45,9 @@ include './_share/client_assets.php';
 <![endif]-->
 
 <!-- Google Font -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"></head>
-<body style="background-color: gray" class="hold-transition login-page">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body style="background-color: gray" class="">
 
 <div class="login-box">
 		<div class="login-box-body">
@@ -61,7 +62,7 @@ include './_share/client_assets.php';
               ?>
 		</div>
       <div class="form-group">
-        <input type="email" name="email" class="form-control" placeholder="Email">
+        <input type="text" name="email" class="form-control" placeholder="Email">
       </div>
       <div class="form-group">
         <input type="password" name="password" class="form-control" placeholder="Password">

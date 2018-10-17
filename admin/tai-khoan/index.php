@@ -52,8 +52,7 @@ $users = $stmt->fetchAll();
             <th>Email</th>
             <th>Tên</th>
             <th>Quyền</th>
-            <th>Ảnh</th>
-            <th>Số điện thoại</th>
+
             <th>
               <a href="<?= $adminUrl ?>tai-khoan/add.php" 
                   class="btn btn-sm btn-success">Thêm</a>
@@ -74,10 +73,6 @@ $users = $stmt->fetchAll();
                     <span>Thành viên</span>  
                   <?php endif ?>
                   </td>
-                <td>
-                  <img src="<?php $siteUrl.$u['avatar'] ?>" width="100">
-                </td>
-                <td><?= $u['phone_number'] ?></td>
                 <td>
                   <a href="<?= $adminUrl ?>tai-khoan/edit.php?id=<?= $u['id'] ?>" 
                   class="btn btn-sm btn-primary">Sửa</a>

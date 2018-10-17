@@ -1,63 +1,30 @@
 <?php 
-session_start();
-require_once '../../commons/utils.php';
-checkLogin(USER_ROLES['admin']);
+require_once './commons/utils.php';
 if($_SERVER['REQUEST_METHOD'] != 'POST'){
-	header('location: ' . $adminUrl . 'tai-khoan');
+	header('location: ' . $siteUrl . 'lienhe.php');
 	die;
 }
-$sql = "select *, (SELECT COUNT(id) FROM users) as totalUser from users";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$us = $stmt->fetchAll();
-//dd($us);
+
 
 $email = $_POST['email'];
-$fullname = $_POST['fullname'];
-$password = $_POST['password'];
-$cfPassword = $_POST['cfPassword'];
-$role = $_POST['role'];
-
-foreach ($us as $u) {
-	if ($email == $u['email']) {
-		header('location: ' . $adminUrl . 'tai-khoan/add.php?msg2=Email đã được sử dụng!');
-	die;
-	}
-
-	}
-if($password != $cfPassword){
-	header('location: ' . $adminUrl . 'tai-khoan/add.php?msg=Xác nhận mật khẩu không đúng!');
-	die;
-}
-if($password == "" && $cfPassword == ""){
-	header('location: ' . $adminUrl . 'tai-khoan/add.php?msg=Mật khẩu không được để trống!');
-	die;
-}
+$name = $_POST['name'];
+$content = $_POST['content'];
 
 
-// email xem có tồn tại không
-
-// mật khẩu có nằm trong khoảng từ 6-20 ký tự không
-
-
-$password = password_hash($password, PASSWORD_DEFAULT);
-$sql = "insert into users
+$sql = "insert into contact
 			(email, 
-			fullname, 
-			password, 
-			role)
+			name, 
+			content)
 		values 
 			(:email, 
-			:fullname, 
-			:password, 
-			:role)";
+			:name, 
+			:content)";
 
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(":email", $email);
-$stmt->bindParam(":fullname", $fullname);
-$stmt->bindParam(":password", $password);
-$stmt->bindParam(":role", $role);
+$stmt->bindParam(":name", $name);
+$stmt->bindParam(":content", $content);
 $stmt->execute();
-header('location: ' . $adminUrl . 'tai-khoan');
+header('location: ' . $siteUrl . 'lienhe.php');
 
  ?>
