@@ -6,7 +6,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 	header('location: ' . $adminUrl . 'tai-khoan');
 	die;
 }
-$sql = "select *, (SELECT COUNT(id) FROM users) as totalUser from users";
+$sql = "select * from users";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $us = $stmt->fetchAll();

@@ -2,6 +2,10 @@
 require_once './commons/utils.php';
 $id = $_GET['id'];
 
+$updateView = " update products SET views = views + 0 WHERE id='$id'";
+$stsm = $conn->prepare($updateView);
+$stsm->execute();
+
 $pro = "select * from " . TABLE_PRODUCT
     . " where id = $id";
 
@@ -23,6 +27,7 @@ $datamoreproductlike = $stmt->fetchAll();
 $updateView = "update products set views = views +1 where id = '$id'";
 $stmt = $conn->prepare($updateView);
 $stmt->execute();
+
 
 
 ?>

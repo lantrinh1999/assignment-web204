@@ -11,6 +11,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 	die;
 }
 $id = $_POST['id'];
+$status = $_POST['status'];
 $old_filename = $_POST['old_filename'];
 $product_name = $_POST['product_name'];
 $detail = $_POST['detail'];
@@ -44,6 +45,7 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 				list_price = :list_price,
 				sell_price = :sell_price,
 				image = :image,
+				status = :status,
 				detail = :detail
 			where id = :id";
 	$stmt = $conn->prepare($sql);
@@ -53,6 +55,7 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 	$stmt->bindParam(":list_price", $list_price);
 	$stmt->bindParam(":sell_price", $sell_price);
 	$stmt->bindParam(":image", $filename);
+		$stmt->bindParam(":status", $status);
 	$stmt->bindParam(":detail", $detail);
 
 	$stmt->execute();

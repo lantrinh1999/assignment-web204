@@ -103,9 +103,7 @@ include './_share/slider.php';
           <div class="footer-product text-center view">
             <a href="<?=$siteUrl?>chitiet.php?id=<?=$np['id']?>" class="btn btn-dark">Xem chi tiết</a>
             <span></span>
-            <!--
 						<a href="#" class="btn btn-dark">Mua hàng</a>
-              -->
 					</div>
           </div>
         </div>
@@ -142,7 +140,7 @@ include './_share/slider.php';
           <div class="footer-product text-center view">
             <a href="<?=$siteUrl?>chitiet.php?id=<?=$np['id']?>" class="btn btn-dark">Xem chi tiết</a>
             <span></span>
-
+						<a href="#" class="btn btn-dark">Mua hàng</a>
 					</div>
           </div>
         </div>

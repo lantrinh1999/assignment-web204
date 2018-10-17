@@ -91,6 +91,15 @@ if(!$product){
                     <?php endforeach ?>
                   </select>
             </div>
+            <div class="form-group">
+                <label>Trạng thái</label>
+                  <select name="status" class="form-control">
+
+                    <option value="1">Còn hàng</option>
+                    <option value="-1">Hết hàng</option>
+
+                  </select>
+            </div>
 
             <!-- Mô tả -->
            
