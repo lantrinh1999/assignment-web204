@@ -37,7 +37,7 @@ $data = $stmt->fetch();
 			</div>
 			<div>
 				<label>Facebook:</label>
-				<a href="#"><?= $data['fb'] ?></a>
+				<a href="<?= $data['fb'] ?>"><?= $data['fb'] ?></a>
 			</div>
 		</div>
 		</div>

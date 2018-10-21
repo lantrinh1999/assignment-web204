@@ -2,9 +2,7 @@
 require_once './commons/utils.php';
 $id = $_GET['id'];
 
-$updateView = " update products SET views = views + 0 WHERE id='$id'";
-$stsm = $conn->prepare($updateView);
-$stsm->execute();
+
 
 $pro = "select * from " . TABLE_PRODUCT
     . " where id = $id";
@@ -24,7 +22,7 @@ $sqlmoreproductlike = "select * from " . TABLE_PRODUCT . " where cate_id =" . $p
 $stmt = $conn->prepare($sqlmoreproductlike);
 $stmt->execute();
 $datamoreproductlike = $stmt->fetchAll();
-$updateView = "update products set views = views +1 where id = '$id'";
+$updateView = "update products set views = views + 1 where id = '$id'";
 $stmt = $conn->prepare($updateView);
 $stmt->execute();
 
@@ -104,11 +102,11 @@ include './_share/header.php';
 						<input type="hidden" name="id" value=" <?=$id?>">
             <span id="err"></span>
 						<div class="form-group">
-							<label>Email</label>
+							<label>Email</label> <span style="color: red" id="e1"></span>
 							<input type="text" id="email" placeholder="email" name="email" class="form-control" >
 						</div>
 						<div class="form-group">
-							<label>Nội dung</label>
+							<label>Nội dung</label> <span style="color: red" id="e2"></span>
 							<textarea class="form-control" id="content" rows="5" placeholder="nội dung" name="content"></textarea>
 						</div>
 						<div class="text-center">
@@ -170,14 +168,16 @@ function validateForm() {
     var atpos = x.indexOf("@");
     var dotpos = x.lastIndexOf(".");
     if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
-        alert("Bạn phải nhập email") ;
+      document.getElementById("e1").innerHTML = "Bạn phải nhập email";
+        
         /*
         var a = document.getElementById('err').innerHTML = "lỗi" ;
         */
         return false;
     }
     if (x == "") {
-      alert("Bạn phải nhập email") ;
+      document.getElementById("e1").innerHTML = "Bạn phải nhập email";
+
      /* 
      var a = document.getElementById('err').innerHTML = "lỗi 1" ;
      */
@@ -185,7 +185,8 @@ function validateForm() {
     }
     var y =  document.forms["myForm"]["content"].value;
     if (y == "") {
-    	alert("Bạn phải nhập nội dung");
+      document.getElementById("e1").innerHTML = "Bạn phải nhập nội dung";
+
       /*
       var a = document.getElementById('err').innerHTML = "lỗi 2" ;
       */

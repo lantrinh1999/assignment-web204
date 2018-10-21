@@ -24,6 +24,35 @@ $filename = 'img/products/'.uniqid() . '.' . $ext;
 
 move_uploaded_file($img['tmp_name'], '../../'.$filename);
 
+
+
+
+if(!$product_name){
+	header('location: ' . $adminUrl . 'san-pham/add.php?errName=Vui lòng nhập tên sản phẩm');
+	die;
+}
+if(!$cate_id){
+	header('location: ' . $adminUrl . 'san-pham/add.php?errName1=Vui lòng chọn danh mục');
+	die;
+}
+if($cate_id == ""){
+	header('location: ' . $adminUrl . 'san-pham/add.php?errName1=Vui lòng chọn danh mục');
+	die;
+}
+if(!$list_price){
+	header('location: ' . $adminUrl . 'san-pham/add.php?errName2=Vui lòng nhập giá');
+	die;
+}
+if(!$sell_price){
+	header('location: ' . $adminUrl . 'san-pham/add.php?errName3=Vui lòng nhập giá khuyến mãi');
+	die;
+}
+if(!$detail){
+	header('location: ' . $adminUrl . 'san-pham/add.php?errName4=Vui lòng nhập Mô tả');
+	die;
+}
+
+
 $sql = "insert into products
 			(product_name, 
 			cate_id, 
@@ -50,9 +79,5 @@ $stmt->execute();
 header('location: ' . $adminUrl . 'san-pham');
 
 
-if(!$product_name){
-	header('location: ' . $adminUrl . 'san-pham/add.php?errName=Vui lòng nhập tên sản phẩm');
-	die;
-}
 
  ?>

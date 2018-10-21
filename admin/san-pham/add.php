@@ -50,7 +50,7 @@ $cate = $stmt->fetchAll();
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <form action="<?= $adminUrl ?>san-pham/save-add.php" method="post" enctype="multipart/form-data">
+        <form name="myForm" class="myForm" onsubmit="return validateForm()" action="<?= $adminUrl ?>san-pham/save-add.php" method="post" enctype="multipart/form-data">
         <div class="col-md-6">
             <!-- Tên sản phẩm -->
             <div class="form-group">
@@ -67,12 +67,21 @@ $cate = $stmt->fetchAll();
             <!-- Danh mục -->
             <div class="form-group">
                 <label>Danh mục</label>
-                  <select name="cate_id" class="form-control">
-                    <option>---</option>
+                  <select name="cate_id" id="cate_id" class="form-control">
+                    <option value="">---</option>
                     <?php foreach ($cate as $c) : ?>
                     <option value="<?= $c['id'] ?>"><?= $c['name'] ?></option>
                     <?php endforeach ?>
                   </select>
+                  <!-- /.error -->
+                  <!-- /.error -->
+              <?php 
+              if(isset($_GET['errName1']) && $_GET['errName1'] != ""){
+               ?>
+               <span class="text-danger"><?= $_GET['errName1'] ?></span>
+              <?php } 
+              ?>
+
             </div>
 
             <!-- Mô tả -->
@@ -80,10 +89,24 @@ $cate = $stmt->fetchAll();
             <div class="form-group">
               <label>Giá</label>
               <input type="text" name="list_price" class="form-control">
+              <!-- /.error -->
+              <?php 
+              if(isset($_GET['errName2']) && $_GET['errName2'] != ""){
+               ?>
+               <span class="text-danger"><?= $_GET['errName2'] ?></span>
+              <?php } 
+              ?>
             </div>
             <div class="form-group">
               <label>Giá KM</label>
               <input type="text" name="sell_price" class="form-control">
+              <!-- /.error -->
+              <?php 
+              if(isset($_GET['errName3']) && $_GET['errName3'] != ""){
+               ?>
+               <span class="text-danger"><?= $_GET['errName3'] ?></span>
+              <?php } 
+              ?>
             </div>       
         </div>
         <div class="col-md-6">
@@ -102,6 +125,13 @@ $cate = $stmt->fetchAll();
            <div class="form-group">
               <label>Mô tả</label>
               <textarea id="editor" class="form-control" name="detail" rows="8"></textarea>
+              <!-- /.error -->
+              <?php 
+              if(isset($_GET['errName4']) && $_GET['errName4'] != ""){
+               ?>
+               <span class="text-danger"><?= $_GET['errName4'] ?></span>
+              <?php } 
+              ?>
             </div>
         </div>
         <div class="col-md-12">
@@ -151,9 +181,6 @@ $cate = $stmt->fetchAll();
     }
     getBase64(file, '#imageTarget');
   }
-
-
-
 
 
 

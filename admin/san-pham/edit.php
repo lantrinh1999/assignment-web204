@@ -90,6 +90,12 @@ if(!$product){
                     <option <?= $selected ?> value="<?= $c['id'] ?>"><?= $c['name'] ?></option>
                     <?php endforeach ?>
                   </select>
+                  <?php 
+              if(isset($_GET['errName1']) && $_GET['errName1'] != ""){
+               ?>
+               <span class="text-danger">( Cảnh báo: <?= $_GET['errName1'] ?>)</span>
+              <?php } 
+              ?>
             </div>
             <div class="form-group">
                 <label>Trạng thái</label>
@@ -99,6 +105,7 @@ if(!$product){
                     <option value="-1">Hết hàng</option>
 
                   </select>
+
             </div>
 
             <!-- Mô tả -->
@@ -106,10 +113,22 @@ if(!$product){
             <div class="form-group">
               <label>Giá</label>
               <input type="text" name="list_price" class="form-control" value="<?= $product['list_price']?>">
+              <?php 
+              if(isset($_GET['errName2']) && $_GET['errName2'] != ""){
+               ?>
+               <span class="text-danger">( Cảnh báo: <?= $_GET['errName2'] ?>)</span>
+              <?php } 
+              ?>
             </div>
             <div class="form-group">
               <label>Giá KM</label>
               <input type="text" name="sell_price" class="form-control" value="<?= $product['sell_price']?>">
+              <?php 
+              if(isset($_GET['errName3']) && $_GET['errName3'] != ""){
+               ?>
+               <span class="text-danger">( Cảnh báo: <?= $_GET['errName3'] ?>)</span>
+              <?php } 
+              ?>
             </div>       
         </div>
         <div class="col-md-6">
@@ -134,6 +153,12 @@ if(!$product){
                 <?= $product['detail']?>
                   
                 </textarea>
+                <?php 
+              if(isset($_GET['errName4']) && $_GET['errName4'] != ""){
+               ?>
+               <span class="text-danger">( Cảnh báo: <?= $_GET['errName4'] ?>)</span>
+              <?php } 
+              ?>
             </div>
         </div>
         <div class="col-md-12">

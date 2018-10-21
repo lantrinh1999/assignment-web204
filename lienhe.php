@@ -57,15 +57,15 @@ include './_share/header.php';
 
             <input type="hidden" name="id" value=" <?=$id?>">
             <div class="form-group">
-              <label>Tên</label>
+              <label>Tên</label> <span style="color: red" id="e1"></span>
               <input type="text" id="name" placeholder="tên" name="name" class="form-control" >
             </div>
             <div class="form-group">
-              <label>Email</label>
+              <label>Email</label> <span style="color: red" id="e2"></span>
               <input type="text" id="email" placeholder="email" name="email" class="form-control" >
             </div>
             <div class="form-group">
-              <label>Nội dung</label>
+              <label>Nội dung</label> <span style="color: red" id="e3"></span>
               <textarea class="form-control" id="content" rows="5" placeholder="nội dung" name="content"></textarea>
             </div>
             <div class="text-center">
@@ -99,23 +99,26 @@ include './_share/footer.php';
 function validateForm() {
     var name = document.forms["myForm"]["name"].value;
     if (name === "") {
-      alert("Bạn phải nhập tên") ;
+      document.getElementById("e1").innerHTML = "Bạn phải nhập tên";
+
         return false;
     }
     var x = document.forms["myForm"]["email"].value;
     if (x === "") {
-      alert("Email không được bỏ trống") ;
+      document.getElementById("e2").innerHTML = "Email không được bỏ trống";
+
         return false;
     }
     var atpos = x.indexOf("@");
     var dotpos = x.lastIndexOf(".");
     if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
-        alert("Bạn phải nhập email đúng định dạng") ;
+      document.getElementById("e2").innerHTML = "Bạn phải nhập email đúng định dạng";
+
         return false;
     }
     var y =  document.forms["myForm"]["content"].value;
     if (y === "") {
-      alert("Bạn phải nhập nội dung");
+      document.getElementById("e3").innerHTML = "Bạn phải nhập nội dung";
         return false;
     }
 }

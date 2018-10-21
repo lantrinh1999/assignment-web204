@@ -106,10 +106,19 @@ Các dòng sản phẩm tiêu biểu của Vans
 <br>
 <div class="col-lg-12">
   <div class="card h-100">
-    <a href="#"><img class="card-img-top" width="60%" height="60%" src="<?= $siteUrl . $np['image'] ?>" alt=""></a>
+    <a href="<?= $siteUrl ?>chitiet.php?id=<?= $np['id'] ?>"><img class="card-img-top" width="60%" height="60%" src="<?= $siteUrl . $np['image'] ?>" alt=""></a>
     <div class="card-body">
+      <?php 
+                            $mainname = $np['product_name'];
+                            if (strlen($mainname) > 20) {
+                                $cutname = substr("$mainname", 0, 20);
+                                $donename = $cutname . "...";
+                            } else {
+                                $donename = $np['product_name'];
+                            }
+                            ?>
       <p class="card-title text-center">
-        <?= $np['product_name'] ?>
+        <?= $donename ?>
       </p>
       <div class="footer-product text-center view">
         <a href="<?= $siteUrl ?>chitiet.php?id=<?= $np['id'] ?>" class="btn btn-dark">Xem chi tiết</a>
