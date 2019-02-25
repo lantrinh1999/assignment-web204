@@ -19,7 +19,7 @@ $sql = "insert into contact
 			(:email, 
 			:name, 
 			:content)";
-
+			
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(":email", $email);
 $stmt->bindParam(":name", $name);

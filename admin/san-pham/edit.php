@@ -7,6 +7,7 @@ require_once $path.$path."commons/utils.php";
 
 checkLogin();
 $productId = $_GET['id'];
+
 $sql = "select * from " . TABLE_PRODUCT. " where id = $productId";
 $stmt = $conn->prepare($sql);
 $stmt->execute();

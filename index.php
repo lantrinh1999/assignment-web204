@@ -247,7 +247,7 @@ include './_share/slider.php';
                 <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg" />
               </div>
               <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:150px;overflow:hidden;">
-                
+                <br>
                 <?php foreach ($newBrand as $key): ?>
                   <div>
                     <img data-u="image" src="<?= $siteUrl.$key['image'] ?>" />

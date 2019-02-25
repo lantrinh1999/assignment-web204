@@ -8,13 +8,14 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 }
 
 $id = $_POST['id'];
+
 $email = $_POST['email'];
 $fullname = $_POST['fullname'];
 $password = $_POST['password'];
 $cfPassword = $_POST['cfPassword'];
 $role = $_POST['role'];
 
-$sql = "select * from users where id not in ('$id')";
+$sql = "select * from users where id != '$id'";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $users = $stmt->fetchAll();

@@ -5,7 +5,7 @@ $path = "../";
 require_once $path.$path."commons/utils.php";
 checkLogin(USER_ROLES['admin']);
 $id = $_GET['id'];
-$sql = "select * from users where id = $id";
+$sql = "select * from users where id = '$id'";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $user = $stmt->fetch();
@@ -57,8 +57,9 @@ if(!$user){
       <div class="row">
         <form action="<?= $adminUrl?>/tai-khoan/save-edit.php" method="post" >
           <div class="col-md-6">
-            <input type="hidden" name="id" value="<?= $id ?>">
+            
             <div class="form-group">
+              <input type="hidden" name="id" value="<?= $user['id'] ?>">
               <label>Email</label>
               <!-- /.error -->
               <?php 

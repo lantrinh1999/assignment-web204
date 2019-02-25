@@ -11,7 +11,7 @@ $status = $_POST['status'];
 $img = $_FILES['image'];
 $old_filename = $_POST['old_filename'];
 $ext = pathinfo($img['name'], PATHINFO_EXTENSION);
-$filename = 'img/slider/'.uniqid() . '.' . $ext;
+$filename = 'images/slider/'.uniqid() . '.' . $ext;
 move_uploaded_file($img['tmp_name'], '../../'.$filename);
 if ($img['name'] == "") {
 	$filename = $image;

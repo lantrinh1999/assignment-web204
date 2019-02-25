@@ -47,8 +47,16 @@ if(!$sell_price){
 	header('location: ' . $adminUrl . 'san-pham/add.php?errName3=Vui lòng nhập giá khuyến mãi');
 	die;
 }
+if($sell_price > $list_price){
+	header('location: ' . $adminUrl . 'san-pham/add.php?errName3=Giá khuyễn mãi phải nhỏ hơn giá sản phẩm');
+	die;
+}
 if(!$detail){
 	header('location: ' . $adminUrl . 'san-pham/add.php?errName4=Vui lòng nhập Mô tả');
+	die;
+}
+if ($img['name'] === "" || $img['size'] === 0 ) {
+	header('location: ' . $adminUrl . 'san-pham/add.php?errName5=Vui lòng chọn ảnh sản phẩm');
 	die;
 }
 

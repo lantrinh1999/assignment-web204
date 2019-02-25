@@ -39,7 +39,6 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 	
 }
 
-
 if($cate_id == ""){
 	header('location: ' . $adminUrl . 'san-pham/edit.php?id='.$id.'&errName1=Vui lòng chọn danh mục');
 	die;
@@ -50,6 +49,10 @@ if(!$list_price){
 }
 if(!$sell_price){
 	header('location: ' . $adminUrl . 'san-pham/edit.php?id='.$id.'&errName3=Vui lòng nhập giá khuyến mãi');
+	die;
+}
+if($sell_price > $list_price){
+	header('location: ' . $adminUrl . 'san-pham/add.php?errName3=Giá khuyễn mãi phải nhỏ hơn giá sản phẩm');
 	die;
 }
 if(!$detail){

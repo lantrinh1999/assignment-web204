@@ -9,7 +9,7 @@ $url = $_POST['url'];
 $status = $_POST['status'];
 $img = $_FILES['image'];
 $ext = pathinfo($img['name'], PATHINFO_EXTENSION);
-$filename = 'img/slider/'.uniqid() . '.' . $ext;
+$filename = 'images/slider/'.uniqid() . '.' . $ext;
 
 move_uploaded_file($img['tmp_name'], '../../' . $filename);
 

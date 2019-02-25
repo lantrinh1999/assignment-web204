@@ -107,7 +107,7 @@ $countUser = $stmt->fetch();
             <div class="icon">
               <i class="fa fa-mail-forward"></i>
             </div>
-            <a href="<?= $adminUrl?>phan-hoi" class="small-box-footer">Danh sách phản hồi <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="<?= $adminUrl?>comment" class="small-box-footer">Danh sách phản hồi <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

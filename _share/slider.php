@@ -13,7 +13,7 @@ $dataSlides = $stmt->fetchAll();
 ?>
 
 
-<div style="max-height: 37.3%,  overflow: hidden" class="row  slider">
+<div style="" class="row  slider">
       <div class="col-12">
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
@@ -59,3 +59,25 @@ $dataSlides = $stmt->fetchAll();
 
 
     </div>
+
+<!------
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="./images/slider-1.jpg" alt="First slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5></h5>
+              <p></p>
+          </div>
+        </div>
+
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    ---->

@@ -118,6 +118,13 @@ $cate = $stmt->fetchAll();
           <div class="form-group">
             <label>Ảnh sản phẩm</label>
             <input id="product_image" type="file" name="image" class="form-control">
+            <!-- /.error -->
+              <?php 
+              if(isset($_GET['errName5']) && $_GET['errName5'] != ""){
+               ?>
+               <span class="text-danger"><?= $_GET['errName5'] ?></span>
+              <?php } 
+              ?>
           </div>
         </div>
 
